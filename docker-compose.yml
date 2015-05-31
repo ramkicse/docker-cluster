@@ -1,0 +1,30 @@
+portal:
+  image: nginx
+  ports:
+   - "8080:80"
+  volumes:
+   - /home/ramki/cluster/default.conf:/etc/nginx/conf.d/default.conf
+  links:
+   - tomcatOne:tomcat1
+   - tomcatTwo:tomcat2
+   - tomcatThree:tomcat3
+tomcatOne:
+  image: tomcat
+  volumes:
+   - /home/ramki/cluster/server.xml:/usr/local/tomcat/conf/server.xml
+   - /home/ramki/cluster/ROOT:/usr/local/tomcat/webapps/ROOT
+   - /home/ramki/cluster/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+tomcatTwo:
+  image: tomcat
+  volumes:
+   - /home/ramki/cluster/server.xml:/usr/local/tomcat/conf/server.xml
+   - /home/ramki/cluster/ROOT:/usr/local/tomcat/webapps/ROOT
+   - /home/ramki/cluster/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+tomcatThree:
+  image: tomcat
+  volumes:
+   - /home/ramki/cluster/server.xml:/usr/local/tomcat/conf/server.xml
+   - /home/ramki/cluster/ROOT:/usr/local/tomcat/webapps/ROOT
+   - /home/ramki/cluster/tomcat-users.xml:/usr/local/tomcat/conf/tomcat-users.xml
+
+
